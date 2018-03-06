@@ -17,7 +17,7 @@ class RNN(object):
         Wx = np.random.randn(n_a, n_x) * 0.01 # input to hidden
         Wa = np.random.randn(n_a, n_a) * 0.01 # hidden to hidden
         Wy = np.random.randn(n_y, n_a) * 0.01 # hidden tp output
-        b = np.zeros((n_x, 1)) * 0.01 # hidden bias
+        b = np.zeros((n_a, 1)) * 0.01 # hidden bias
         by = np.zeros((n_y, 1)) * 0.01 # output bias
         parameters = {'Wx':Wx, 'Wa':Wa, 'Wy':Wy, 'b':b, 'by':by}
         return parameters
@@ -149,7 +149,7 @@ if __name__ == '__main__':
     char_to_ix = { ch:i for i,ch in enumerate(sorted(chars)) }
     ix_to_char = { i:ch for i,ch in enumerate(sorted(chars)) }
 
-    rnn = RNN(vocab_size = vocab_size, num_cells = 27)
+    rnn = RNN(vocab_size = vocab_size, num_cells = 50)
     with open('dinos.txt') as f:
         examples = f.readlines()
     examples = [x.lower().strip() for x in examples]
