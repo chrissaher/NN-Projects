@@ -10,13 +10,22 @@ class LinearRegression(object):
         """Pending"""
         return X, Y
 
+    def initialize_parameter(self, X):
+        m = X.shape[0]
+        nx = np.ones((m,3))
+        for j in range(m):
+            for i in range(2):
+                nx[j][i + 1] = nx[j][i] * X[j]
+        return nx
+
     def fit(self, X, Y, epochs = 1000, batch_size = 64, lr = 0.0001):
-        m = len(X)
-        print(m)
+        X = self.initialize_parameter(X)
+        m, n = X.shape
+
         x = tf.placeholder(tf.float32, name='x')
         y = tf.placeholder(tf.float32, name='y')
-        W = tf.Variable(np.random.randn(3), name='W')
-        b = tf.Variable(np.random.randn(), name='b')
+        W = tf.Variable(np.random.randn(m, n), dtype = 'float32', name='W')
+        b = tf.Variable(np.random.randn(n), dtype = 'float32', name='b')
         z = tf.add(tf.multiply(x,W), b)
 
         # Mean square error
