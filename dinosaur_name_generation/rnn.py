@@ -1,6 +1,13 @@
 from rnn_cell import RNN_Cell
 from helpers import smooth, get_initial_loss, print_sample, softmax
 import numpy as np
+import os
+import sys
+
+DINOS_PATH = os.getcwd()
+if 'dinosaur_name_generation' not in DINOS_PATH:
+    DINOS_PATH += '/dinosaur_name_generation'
+DINOS_PATH += '/dinos.txt'
 
 class RNN(object):
     """docstring for RNN."""
@@ -141,7 +148,7 @@ class RNN(object):
         return parameters
 
 if __name__ == '__main__':
-    data = open('dinos.txt', 'r').read()
+    data = open(DINOS_PATH, 'r').read()
     data= data.lower()
     chars = list(set(data))
     data_size, vocab_size = len(data), len(chars)
@@ -150,7 +157,7 @@ if __name__ == '__main__':
     ix_to_char = { i:ch for i,ch in enumerate(sorted(chars)) }
 
     rnn = RNN(vocab_size = vocab_size, num_cells = 50)
-    with open('dinos.txt') as f:
+    with open(DINOS_PATH) as f:
         examples = f.readlines()
     examples = [x.lower().strip() for x in examples]
     print('*' * 20)
