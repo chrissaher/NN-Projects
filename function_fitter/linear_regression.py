@@ -47,9 +47,6 @@ class LinearRegression(object):
             print('Training cost: ', training_cost)
 
 
-
-
-
 if __name__ == '__main__':
     # ax^2 + bx + c = 0
     a = 4

@@ -1,0 +1,8 @@
+paths=(
+    ${PWD}
+)
+
+PYTHONPATH=""
+echo "INFO: PYTHONPATH is now empty"
+
+export PYTHONPATH
