@@ -12,6 +12,8 @@ It's highly recommended to use [virtualenv](https://virtualenv.pypa.io/en/stable
 
 - [function_fitter](https://github.com/chrissaher/NN-Projects/tree/master/function_fitter) - Linear regression.
 
+- [mnist-keras](https://github.com/chrissaher/NN-Projects/tree/master/mnist-keras) - CNN 2D with keras.
+
 ## Run the code
 First it's important to install all dependencies
 
