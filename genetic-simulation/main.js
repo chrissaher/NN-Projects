@@ -54,7 +54,7 @@ class Controller {
     console.log(dx);
     console.log(dy);
     this.drawAtPos(x, y, g.r, g.g, g.b);
-    var id = setInterval(frame, 10);
+    var id = setInterval(frame, 300);
     var controller = this;
     function frame() {
       if(it == t){
@@ -67,9 +67,9 @@ class Controller {
         it++;
         var nx = x + dx[it], ny = y + dy[it];
         if (nx < 0 || nx > this.limitX || ny < 0 || ny > this.limitY){
-          //alert('End of simulation. Out of bounds.')
-          // it = t;
-          //break;
+          // console.log('End of simulation. Out of bounds.')
+          // clearInterval(id);
+          // break;
         } else {
           controller.clearAtPos(x, y)
           x = nx;
@@ -113,6 +113,10 @@ $(() => {
 	var controller = new Controller();
   var genetic = new Genetic();
   $('#btnStart').click(function(){
-    controller.drawPath(genetic.population[0]);
+    for(var it in genetic.population) {
+      // console.log(genetic.population[it])
+      controller.drawPath(genetic.population[it]);
+    }
+    // controller.drawPath(genetic.population[0]);
   });
 });
